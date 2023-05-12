@@ -56,15 +56,16 @@ export const createImage = async (input: Image) => {
       .returns<Image>()
       .single();
     if (error) throw error;
-    return data;
+    return data as Image;
   }
 
   export const getImages = async () => {
     const supabase = createClient(SUPABASE_URL, process.env.SUPABASE_SECRET_KEY!)
     const { data, error } = await supabase
       .from("images")
-      .select("*")
+      .select()
       .order("created_at", { ascending: false})
+      .limit(1000)
       .returns<Image[]>();
     if (error) throw error;
     return data;
