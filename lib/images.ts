@@ -62,7 +62,10 @@ export const createImage = async (input: Image) => {
     const { data, error } = await supabase
       .from("images")
       .insert({
-        ...input,
+        response1: "AAA",
+        response2: "BB",
+        response3: "C",
+        userEmail: "humanafterall2023@gmail.com",
         thumbnailUrl,
         imageUrl,
       })

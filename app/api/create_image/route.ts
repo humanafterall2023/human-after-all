@@ -8,6 +8,6 @@ export async function POST(request: Request) {
     error: "Error generating image",
   });
   await sendEmail(result);
-  await addUserToList(result.userEmail);
+  // await addUserToList(result.userEmail);
   return NextResponse.json(result);
 }
