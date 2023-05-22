@@ -1,3 +1,4 @@
+// @ts-ignore
 const Title = ({ isPressed }) => {
   return (
     <div className="mt-32">

@@ -1,3 +1,4 @@
+// @ts-ignore
 const FinalPage = ({ imageUrl }) => {
     return (
         <>

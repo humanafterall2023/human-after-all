@@ -5,7 +5,7 @@ import { Input, useInput, Grid, FormElement } from "@nextui-org/react";
 const EmailInput = ({ setisEmailPressed }) => {
   const { value: emailValue, reset: resetEmail, bindings: emailBindings } = useInput("");
 
-  const validateEmail = (value) => {
+  const validateEmail = (value: string) => {
     return value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i);
   };
 
@@ -13,7 +13,7 @@ const EmailInput = ({ setisEmailPressed }) => {
     if (!emailValue)
       return {
         text: "",
-        color: "",
+        color: undefined,
       };
     const isValid = validateEmail(emailValue);
     return {
@@ -22,7 +22,7 @@ const EmailInput = ({ setisEmailPressed }) => {
     };
   }, [emailValue]);
 
-  const handleEmailInput = async (e) => {
+  const handleEmailInput = async (e: { key: string; preventDefault: () => void; }) => {
     if (e.key === "Enter") {
       setisEmailPressed(true);
       console.log("Email Inputted: " + emailValue);
@@ -46,9 +46,9 @@ const EmailInput = ({ setisEmailPressed }) => {
           color: "#d8c0b9",
         },
       }}
-      status={helper.color}
-      color={helper.color}
-      helperColor={helper.color}
+      status={helper.color as "success" | "error" | undefined}
+      color={helper.color as "success" | "error" | undefined}
+      helperColor={helper.color as "success" | "error" | undefined}
       helperText={helper.text}
       type="email"
       width="100%"

@@ -1,6 +1,7 @@
 import { Input, useInput } from "@nextui-org/react";
 import { useMemo } from "react";
 
+// @ts-ignore
 const FirstPage = ({ query, setQuery, setisPressed, setImageUrl }) => {
   
   const { value, reset, bindings } = useInput("");
@@ -22,6 +23,7 @@ const FirstPage = ({ query, setQuery, setisPressed, setImageUrl }) => {
     };
   }, [value]);
 
+  // @ts-ignore
   const handleKeyPress = async (e) => {
     if (e.key === "Enter") {
       setisPressed(true);
