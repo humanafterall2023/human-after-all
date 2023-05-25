@@ -64,7 +64,7 @@ export default function Home() {
           <Title isPressed={isPressed} onClick={handleReset} />
           {!isPressed ? (
             <>
-            <div className="flex flex-row w-3/4 justify-between mb-16">
+            <div className="flex flex-row w-3/4 justify-between mb-20">
               <div className="input-container border-[#d8c0b9] border-2 rounded p-1 bg-black relative">
                 <a className="text-xs text-center font-mono font-thin font-3xs text-[#d8c0b9] flex items-center justify-center" href="/gallery" >
                   Community Gallery

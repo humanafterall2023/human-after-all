@@ -3,14 +3,9 @@ import Gallery from "../app/gallery/page";
 
 // @ts-ignore
 const FinalPage = ({ imageUrl }) => {
-  const [isGalleryPressed, setisGalleryPressed] = useState(false);
 
   return (
     <>
-      {isGalleryPressed ? (
-        <Gallery />
-      ) : (
-        <>
           <div className="input-container border-[#d8c0b9] border-2 rounded bg-black w-80 relative h-80">
             <div
               className="top-0 left-0 h-80 w-80 absolute"
@@ -43,7 +38,7 @@ const FinalPage = ({ imageUrl }) => {
               Events
             </a>
           </div>
-          <div className="input-container border-[#d8c0b9] border-2 rounded p-1 bg-black w-5/6 relative mb-10">
+          <div className="input-container border-[#d8c0b9] border-2 rounded p-1 bg-black w-5/6 relative mb-4">
             <a
               href="https://www.google.com"
               className="text-xs text-center font-mono font-thin text-[#d8c0b9] flex items-center justify-center h-10"
@@ -51,8 +46,6 @@ const FinalPage = ({ imageUrl }) => {
               Merch
             </a>
           </div>
-        </>
-      )}
     </>
   );
 };
