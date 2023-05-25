@@ -32,7 +32,7 @@ const FinalPage = ({ imageUrl }) => {
 
           <div className="input-container border-[#d8c0b9] border-2 rounded p-1 bg-black w-5/6 relative">
             <a
-              href="https://www.google.com"
+              href="/events"
               className="text-xs text-center font-mono font-thin text-[#d8c0b9] flex items-center justify-center h-10"
             >
               Events
