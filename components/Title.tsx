@@ -1,8 +1,8 @@
 // @ts-ignore
-const Title = ({ isPressed }) => {
+const Title = ({ isPressed, onClick }) => {
   return (
     <div className="mt-32">
-      <h1 className="text-xl text-center text-[#d8c0b9] font-bold">
+      <h1 className="text-xl text-center text-[#d8c0b9] font-bold" onClick={onClick}>
         <i>WE'RE HUMAN, &nbsp; AFTER ALL</i>
       </h1>
       {!isPressed && (

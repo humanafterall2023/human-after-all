@@ -1,4 +1,7 @@
+"use client";
 import React, { useState, useEffect } from "react";
+import { createTheme, NextUIProvider } from "@nextui-org/react";
+import { theme } from "../page";
 
 const Gallery = () => {
   const [images, setImages] = useState([]);
@@ -29,7 +32,12 @@ const Gallery = () => {
   };
 
   return (
-    <div className="absolute top-52">
+    <NextUIProvider theme={theme}>
+    <main className="flex flex-col items-center bg-black min-h-screen p-8">
+    <a className="text-xl text-center text-[#d8c0b9] font-bold" href="/">
+        <i>WE'RE HUMAN, &nbsp; AFTER ALL</i>
+      </a>
+    <div className="absolute top-20">
       <h1 className="text-center">Gallery</h1>
       {!selectedImage ? (
         <div className="grid grid-cols-3 gap-4">
@@ -52,6 +60,8 @@ const Gallery = () => {
         </div>
       )}
     </div>
+      </main>
+      </NextUIProvider>
   );
 };
 

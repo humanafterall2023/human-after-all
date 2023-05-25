@@ -3,7 +3,7 @@ import Image from "next/image";
 import Title from "@/components/Title";
 import { Button, Input, Spacer, useInput } from "@nextui-org/react";
 import * as React from "react";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import { useState, useMemo } from "react";
@@ -11,7 +11,7 @@ import FinalPage from "@/components/FinalPage";
 import FirstPage from "@/components/FirstPage";
 import PreviewPage from "@/components/PreviewPage";
 
-const theme = createTheme({
+export const theme = createTheme({
   type: "dark", // it could be "light" or "dark"
   theme: {
     colors: {
@@ -47,6 +47,11 @@ export default function Home() {
   const [isPressed, setisPressed] = useState(false);
   const [isEmailPressed, setisEmailPressed] = useState(false);
 
+  const handleReset = () => {
+    setisPressed(false);
+    setisEmailPressed(false);
+  };
+
   return (
     <NextUIProvider theme={theme}>
       <main className="flex flex-col items-center bg-black min-h-screen p-8">
@@ -56,29 +61,42 @@ export default function Home() {
           transition={{ duration: 1 }}
           className="flex flex-col items-center justify-between flex-1"
         >
-        <Title isPressed={isPressed} />
-        {!isPressed ? (
-          <>
-            <FirstPage
-              query={query}
-              setQuery={setQuery}
-              setisPressed={setisPressed}
-              setImageUrl={setImageUrl}
-            />
-          </>
-        ) : (
-          <>
-            {!isEmailPressed ? (
-              <PreviewPage
+          <Title isPressed={isPressed} onClick={handleReset} />
+          {!isPressed ? (
+            <>
+            <div className="flex flex-row w-3/4 justify-between mb-16">
+              <div className="input-container border-[#d8c0b9] border-2 rounded p-1 bg-black relative">
+                <a className="text-xs text-center font-mono font-thin font-3xs text-[#d8c0b9] flex items-center justify-center" href="/gallery" >
+                  Community Gallery
+                </a>
+              </div>
+              <div className="input-container border-[#d8c0b9] border-2 rounded p-1 bg-black relative">
+                <a className="text-xs text-center font-mono font-thin font-3xs text-[#d8c0b9] flex items-center justify-center" href="/events" >
+                  Event Guide
+                </a>
+              </div>
+            </div>
+              <FirstPage
                 query={query}
-                imageUrl={imageUrl}
-                setisEmailPressed={setisEmailPressed}
+                setQuery={setQuery}
+                setisPressed={setisPressed}
+                setImageUrl={setImageUrl}
               />
-            ) : (
-              <FinalPage imageUrl={imageUrl} />
-            )}
-          </>
-        )}
+            </>
+          ) : (
+            <>
+              {!isEmailPressed ? (
+                <PreviewPage
+                  query={query}
+                  imageUrl={imageUrl}
+                  setisEmailPressed={setisEmailPressed}
+                />
+              ) : (
+                <FinalPage imageUrl={imageUrl} />
+              )}
+              <button onClick={handleReset}>Home</button>
+            </>
+          )}
         </motion.div>
       </main>
     </NextUIProvider>

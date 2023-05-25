@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Gallery from "./Gallery";
+import Gallery from "../app/gallery/page";
 
 // @ts-ignore
 const FinalPage = ({ imageUrl }) => {
@@ -28,9 +28,8 @@ const FinalPage = ({ imageUrl }) => {
           </div>
           <div className="input-container border-[#d8c0b9] border-2 rounded p-1 bg-black w-5/6 relative">
             <a
-              href="#"
               className="text-xs text-center font-mono font-thin text-[#d8c0b9] flex items-center justify-center h-10"
-              onClick={() => setisGalleryPressed(true)}
+              href="/gallery"
             >
               Community Gallery
             </a>

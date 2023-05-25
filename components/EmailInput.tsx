@@ -22,10 +22,12 @@ const EmailInput = ({ setisEmailPressed }) => {
     };
   }, [emailValue]);
 
-  const handleEmailInput = async (e: { key: string; preventDefault: () => void; }) => {
+  const handleEmailInput = (e) => {
     if (e.key === "Enter") {
-      setisEmailPressed(true);
-      console.log("Email Inputted: " + emailValue);
+      if (validateEmail(emailValue)) {
+        setisEmailPressed(true);
+        console.log("Email Inputted: " + emailValue);
+      }
       e.preventDefault();
     }
   };
