@@ -11,7 +11,7 @@ import FinalPage from "@/components/FinalPage";
 import FirstPage from "@/components/FirstPage";
 import PreviewPage from "@/components/PreviewPage";
 
-export const theme = createTheme({
+const theme = createTheme({
   type: "dark", // it could be "light" or "dark"
   theme: {
     colors: {

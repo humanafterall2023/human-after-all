@@ -22,6 +22,7 @@ const EmailInput = ({ setisEmailPressed }) => {
     };
   }, [emailValue]);
 
+  //@ts-ignore
   const handleEmailInput = (e) => {
     if (e.key === "Enter") {
       if (validateEmail(emailValue)) {
