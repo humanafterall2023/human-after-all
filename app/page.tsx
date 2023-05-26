@@ -10,6 +10,7 @@ import { useState, useMemo } from "react";
 import FinalPage from "@/components/FinalPage";
 import FirstPage from "@/components/FirstPage";
 import PreviewPage from "@/components/PreviewPage";
+import animationData from '@/public/animationData.json';
 
 const theme = createTheme({
   type: "dark", // it could be "light" or "dark"
@@ -94,7 +95,7 @@ export default function Home() {
               ) : (
                 <FinalPage imageUrl={imageUrl} />
               )}
-              <button onClick={handleReset}>Home</button>
+              <button className="text-[#d8c0b9] font-mono font-thin" onClick={handleReset}>Go Home</button>
             </>
           )}
         </motion.div>
