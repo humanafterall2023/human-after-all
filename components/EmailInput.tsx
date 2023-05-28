@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { Input, useInput, Grid, FormElement } from "@nextui-org/react";
 
 // @ts-ignore
-const EmailInput = ({ setisEmailPressed }) => {
+const EmailInput = ({ navigateToPage, currentPageIndex }) => {
   const { value: emailValue, reset: resetEmail, bindings: emailBindings } = useInput("");
 
   const validateEmail = (value: string) => {
@@ -26,7 +26,7 @@ const EmailInput = ({ setisEmailPressed }) => {
   const handleEmailInput = (e) => {
     if (e.key === "Enter") {
       if (validateEmail(emailValue)) {
-        setisEmailPressed(true);
+        navigateToPage(currentPageIndex + 1);
         console.log("Email Inputted: " + emailValue);
       }
       e.preventDefault();
@@ -36,7 +36,7 @@ const EmailInput = ({ setisEmailPressed }) => {
   return (
     <Input
       {...emailBindings}
-      style={{ fontSize: "0.82rem" }}
+      style={{ margin: "0"  }}
       className="bg-black font-mono top-0 left-0 right-0 bottom-0"
       aria-label="Enter your email to claim your art"
       clearable
@@ -55,7 +55,6 @@ const EmailInput = ({ setisEmailPressed }) => {
       helperText={helper.text}
       type="email"
       width="100%"
-      placeholder="+ Enter your email to claim your art"
       rounded={false}
       bordered={false}
       onKeyPress={handleEmailInput}

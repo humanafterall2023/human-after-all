@@ -2,8 +2,7 @@ import { Input, useInput } from "@nextui-org/react";
 import { useMemo } from "react";
 
 // @ts-ignore
-const FirstPage = ({ navigateToPage, currentPageIndex }) => {
-  
+const SecondPage = ({ navigateToPage, currentPageIndex }) => {
   const { value, reset, bindings } = useInput("");
 
   const helper = useMemo(() => {
@@ -21,7 +20,7 @@ const FirstPage = ({ navigateToPage, currentPageIndex }) => {
   // @ts-ignore
   const handleKeyPress = async (e) => {
     if (e.key === "Enter") {
-      navigateToPage(currentPageIndex + 1);
+        navigateToPage(currentPageIndex + 1);
       console.log("enter press here! " + e.target.value);
       e.preventDefault();
 
@@ -55,7 +54,6 @@ const FirstPage = ({ navigateToPage, currentPageIndex }) => {
       } catch (error) {
         console.error(error);
         // Handle the error appropriately
-
       }
     }
   };
@@ -64,9 +62,12 @@ const FirstPage = ({ navigateToPage, currentPageIndex }) => {
     <>
       <div className="w-80 mb-40">
         <div className="input-container rounded bg-black relative mb-12 w-full">
-        <div className="text-xs text-left font-mono font-thin text-[#d8c0b9] mb-2">
-          What is an image that comes to your mind when you see “NYC?”
-        </div>
+          <div className="text-xs text-left font-mono font-thin text-[#d8c0b9] mb-2">
+            What memory first comes to mind when you think of love? 
+            <br/>
+            <br/>
+            Describe it in rich detail.
+          </div>
           <Input
             style={{ textAlign: "left", margin: "0" }}
             className="bg-black font-mono top-0 left-0 right-0 bottom-0 text-left flex w-full max-w-lg h-20"
@@ -95,4 +96,4 @@ const FirstPage = ({ navigateToPage, currentPageIndex }) => {
   );
 };
 
-export default FirstPage;
+export default SecondPage;

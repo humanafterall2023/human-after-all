@@ -1,16 +1,17 @@
 "use client";
-import Image from "next/image";
 import Title from "@/components/Title";
-import { Button, Input, Spacer, useInput } from "@nextui-org/react";
 import * as React from "react";
 import { motion } from "framer-motion";
 
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import { useState, useMemo } from "react";
-import FinalPage from "@/components/FinalPage";
 import FirstPage from "@/components/FirstPage";
-import PreviewPage from "@/components/PreviewPage";
-import animationData from '@/public/animationData.json';
+import Schedule from "@/components/Schedule";
+import Info from "@/components/Info";
+import SecondPage from "@/components/SecondPage";
+import ThirdPage from "@/components/ThirdPage";
+import EmailPage from "@/components/EmailPage";
+import LastPage from "@/components/LastPage";
 
 const theme = createTheme({
   type: "dark", // it could be "light" or "dark"
@@ -42,16 +43,32 @@ const theme = createTheme({
   },
 });
 
+const pages = [FirstPage, SecondPage, ThirdPage, EmailPage, LastPage];
+
 export default function Home() {
-  const [query, setQuery] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [isPressed, setisPressed] = useState(false);
-  const [isEmailPressed, setisEmailPressed] = useState(false);
+  const [currentPageIndex, setCurrentPageIndex] = React.useState(0);
 
   const handleReset = () => {
-    setisPressed(false);
-    setisEmailPressed(false);
+    setCurrentPageIndex(0);
   };
+
+  // @ts-ignore
+  const navigateToPage = (index) => {
+    setCurrentPageIndex(index);
+  };
+
+  const renderPage = () => {
+    const PageComponent = pages[currentPageIndex];
+    return (
+      <PageComponent
+        navigateToPage={navigateToPage}
+        currentPageIndex={currentPageIndex}
+      />
+    );
+  };
+
+  const [isSchedule, setisSchedule] = useState(false);
+  const [isInfo, setisInfo] = useState(false);
 
   return (
     <NextUIProvider theme={theme}>
@@ -60,43 +77,21 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 50 }}
           transition={{ duration: 1 }}
-          className="flex flex-col items-center justify-between flex-1"
+          className="flex flex-col items-center flex-1"
         >
-          <Title isPressed={isPressed} onClick={handleReset} />
-          {!isPressed ? (
-            <>
-            <div className="flex flex-row w-3/4 justify-between mb-20">
-              <div className="input-container border-[#d8c0b9] border-2 rounded p-1 bg-black relative">
-                <a className="text-xs text-center font-mono font-thin font-3xs text-[#d8c0b9] flex items-center justify-center" href="/gallery" >
-                  Community Gallery
-                </a>
-              </div>
-              <div className="input-container border-[#d8c0b9] border-2 rounded p-1 bg-black relative">
-                <a className="text-xs text-center font-mono font-thin font-3xs text-[#d8c0b9] flex items-center justify-center" href="/events" >
-                  Event Guide
-                </a>
-              </div>
-            </div>
-              <FirstPage
-                query={query}
-                setQuery={setQuery}
-                setisPressed={setisPressed}
-                setImageUrl={setImageUrl}
-              />
-            </>
+          <Title
+            handleReset={handleReset}
+            setisSchedule={setisSchedule}
+            setisInfo={setisInfo}
+            isSchedule={isSchedule}
+            isInfo={isInfo}
+          />
+          {!isSchedule && !isInfo ? (
+            renderPage()
+          ) : isSchedule ? (
+            <Schedule />
           ) : (
-            <>
-              {!isEmailPressed ? (
-                <PreviewPage
-                  query={query}
-                  imageUrl={imageUrl}
-                  setisEmailPressed={setisEmailPressed}
-                />
-              ) : (
-                <FinalPage imageUrl={imageUrl} />
-              )}
-              <button className="text-[#d8c0b9] font-mono font-thin" onClick={handleReset}>Go Home</button>
-            </>
+            <Info />
           )}
         </motion.div>
       </main>

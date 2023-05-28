@@ -1,9 +1,9 @@
-import { Input, useInput } from "@nextui-org/react";
+import { Input, useInput, Spacer } from "@nextui-org/react";
 import { useMemo } from "react";
+import EmailInput from "./EmailInput";
 
 // @ts-ignore
-const FirstPage = ({ navigateToPage, currentPageIndex }) => {
-  
+const LastPage = () => {
   const { value, reset, bindings } = useInput("");
 
   const helper = useMemo(() => {
@@ -21,7 +21,6 @@ const FirstPage = ({ navigateToPage, currentPageIndex }) => {
   // @ts-ignore
   const handleKeyPress = async (e) => {
     if (e.key === "Enter") {
-      navigateToPage(currentPageIndex + 1);
       console.log("enter press here! " + e.target.value);
       e.preventDefault();
 
@@ -55,44 +54,31 @@ const FirstPage = ({ navigateToPage, currentPageIndex }) => {
       } catch (error) {
         console.error(error);
         // Handle the error appropriately
-
       }
     }
   };
 
   return (
     <>
-      <div className="w-80 mb-40">
-        <div className="input-container rounded bg-black relative mb-12 w-full">
-        <div className="text-xs text-left font-mono font-thin text-[#d8c0b9] mb-2">
-          What is an image that comes to your mind when you see “NYC?”
-        </div>
-          <Input
-            style={{ textAlign: "left", margin: "0" }}
-            className="bg-black font-mono top-0 left-0 right-0 bottom-0 text-left flex w-full max-w-lg h-20"
-            aria-label="Enter text to generate an image"
-            clearable
-            shadow={false}
-            onClearClick={reset}
-            css={{
-              $$inputColor: "black",
-              borderRadius: "$pill",
-              "::placeholder": {
-                color: "#d8c0b9",
-              },
-            }}
-            status="primary"
-            helperColor="primary"
-            helperText={helper.text}
-            width="100%"
-            rounded={false}
-            bordered={false}
-            onKeyPress={handleKeyPress}
+      <div className="w-80">
+        <div className="input-container rounded bg-black relative w-full flex-row text-center snap-center">
+          <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2">
+            Thanks for dreaming with us...
+          </div>
+          <img
+            src="large.png"
+            alt="Oculus Image"
+            className="border-gray-600 border rounded mt-2 text-center p-20 snap-center "
           />
+          <div className="text-xs font-mono font-thin text-[#d8c0b9] mt-2 mb-2">
+            Tap your dream to make it an NFT :)
+            <br />
+            Surreal, right?
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default FirstPage;
+export default LastPage;
