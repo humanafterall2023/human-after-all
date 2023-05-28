@@ -69,6 +69,7 @@ const FirstPage = ({ navigateToPage, currentPageIndex }) => {
         </div>
           <Input
             style={{ textAlign: "left", margin: "0" }}
+            autoFocus
             className="bg-black font-mono top-0 left-0 right-0 bottom-0 text-left flex w-full max-w-lg h-20"
             aria-label="Enter text to generate an image"
             clearable

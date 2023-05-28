@@ -46,6 +46,7 @@ const theme = createTheme({
 const pages = [FirstPage, SecondPage, ThirdPage, EmailPage, LastPage];
 
 export default function Home() {
+  const [toggle, setToggle] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = React.useState(0);
 
   const handleReset = () => {
@@ -67,8 +68,7 @@ export default function Home() {
     );
   };
 
-  const [isSchedule, setisSchedule] = useState(false);
-  const [isInfo, setisInfo] = useState(false);
+  
 
   return (
     <NextUIProvider theme={theme}>
@@ -81,18 +81,10 @@ export default function Home() {
         >
           <Title
             handleReset={handleReset}
-            setisSchedule={setisSchedule}
-            setisInfo={setisInfo}
-            isSchedule={isSchedule}
-            isInfo={isInfo}
+            toggle={toggle}
+            setToggle={setToggle}
           />
-          {!isSchedule && !isInfo ? (
-            renderPage()
-          ) : isSchedule ? (
-            <Schedule />
-          ) : (
-            <Info />
-          )}
+          {!toggle && renderPage()}
         </motion.div>
       </main>
     </NextUIProvider>

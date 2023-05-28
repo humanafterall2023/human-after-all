@@ -86,7 +86,9 @@ const Schedule = () => {
 
   return (
     <div className="w-full justify-center">
+      <br/>
       <div className="text-[#d8c0b9] text-center">SCHEDULE</div>
+      <br/>
       <div className="w-full border-b border-gray-300 h-0.5"></div>
       {eventsData.map((day, index) => (
         <div key={index} className="flex flex-col items-start">
@@ -96,9 +98,6 @@ const Schedule = () => {
               <div onClick={() => handleAccordionClick(eventIndex)}>
                 <div className="text-[#749EA1]"> • {event.title}&nbsp; - &nbsp; <span className="text-[#d8c0b9]">{event.time}</span> </div>
               </div>
-              {activeAccordion === eventIndex && (
-                <div className="text-[#d8c0b9]">{event.description}</div>
-              )}
             </div>
           ))}
         </div>
