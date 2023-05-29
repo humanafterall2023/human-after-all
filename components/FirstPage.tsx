@@ -30,12 +30,11 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
     <>
       <div className="w-80 mb-40">
         <div className="input-container rounded bg-black relative mb-12 w-full">
-          <div className="text-xs text-left font-mono font-thin text-[#d8c0b9] mb-2">
-            Hello, Human. Type a word that describes humans in New York
-            <span style={{ fontFamily: "courier" }}>:</span>
+          <div className="text-s text-left font-mono font-thin text-[#d8c0b9] mb-4">
+            Hello :) Type a word to describe humans:
           </div>
           <Input
-            style={{ textAlign: "left", margin: "0" }}
+            style={{ textAlign: "left", margin: "0", border: "0.5px solid #d8c0b9", borderRadius: "2px", padding: "4px" }}
             autoFocus
             className="bg-black font-mono top-0 left-0 right-0 bottom-0 text-left flex w-full max-w-lg h-20"
             aria-label="Enter text to generate an image"
@@ -53,7 +52,6 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
             helperColor="primary"
             width="100%"
             rounded={false}
-            bordered={true}
             onKeyPress={handleKeyPress}
             onBlur={onBlur}
           />

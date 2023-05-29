@@ -6,6 +6,7 @@ const LastPage = ({ setToggle }) => {
   const [selectedImage, setSelectedImage] = useState<ImageInfo | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [imageUrl, setImageUrl] = useState("large.png");
+  const [imageResponse, setImageResponse] = useState("");
 
   useEffect(() => {
     const input = {
@@ -23,6 +24,7 @@ const LastPage = ({ setToggle }) => {
     }).then((d) =>
       d.json().then((result) => {
         setImageUrl(result.imageUrl);
+        setImageResponse(result.response1);
       })
     );
   }, []);
@@ -61,9 +63,11 @@ const LastPage = ({ setToggle }) => {
   return (
     <>
       <div className="w-80">
-        <div className="input-container rounded bg-black relative w-full flex-row text-center snap-center">
-          <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2">
-            {isOpenAILoading ? "I'm working..." : "Here's what I created"}
+        <div className="input-container rounded bg-black relative w-full flex-row snap-center">
+          <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2" style={{fontSize:"1.1rem", fontWeight: 260, letterSpacing: "2px"}}>
+            {isOpenAILoading ? "I'm working..." : imageResponse}
+            <br/> 
+            <br/>
           </div>
           {isOpenAILoading ? (
             <div
@@ -78,9 +82,9 @@ const LastPage = ({ setToggle }) => {
               <div
                 className="blink"
                 style={{
-                  backgroundColor: "white",
-                  width: 48,
-                  height: 48,
+                  backgroundColor: "#d8c0b9",
+                  width: 18,
+                  height: 18,
                   borderRadius: "50%",
                 }}
               />
@@ -88,10 +92,10 @@ const LastPage = ({ setToggle }) => {
           ) : (
             <img src={imageUrl} alt="Oculus Image" />
           )}
-          <i>{localStorage.getItem("prompt1")}</i>
+          <br/><br/>
           <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2">
             I'll keep you posted on{" "}
-            <a onClick={() => setToggle(true)}>our events</a>.
+            <span style={{cursor: "pointer", color:"#749EA1" }}onClick={() => setToggle(true)}>our events</span>.
           </div>
           <br />
           <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2">

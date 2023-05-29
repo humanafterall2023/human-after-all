@@ -126,22 +126,22 @@ const Schedule = () => {
   return (
     <div className="w-full justify-center">
       <br />
-      <div className="text-[#d8c0b9] text-center">SCHEDULE</div>
+      <div className="text-[#d8c0b9] font-mono" style={{fontSize:"1.3rem", fontWeight: 260, letterSpacing: "2px"}}>SCHEDULE</div>
       <br />
-      <div className="w-full border-b border-gray-300 h-0.5"></div>
       {eventsData.map((day, index) => (
         <div key={index} className="flex flex-col items-start">
-          <div className="text-[#d8c0b9] text-md text-mono mt-2 mb-2">
-            <b>{day.day}</b>
+          <div className="text-[#d8c0b9] text-md font-mono mt-2 mb-2">
+            {day.day}
           </div>
           {day.events.map((event, eventIndex) => (
-            <div key={event.title} className="w-full">
+            <div style={{marginLeft: 16}} key={event.title} className="w-full">
               <div onClick={() => handleAccordionClick(eventIndex)}>
-                <div className="text-[#749EA1]">
+                <div className="text-[#749EA1] font-mono" style={{letterSpacing: "0.5px", fontSize: "0.8rem"}}>
                   {" "}
-                  • {event.title}&nbsp; - &nbsp;{" "}
+                  • {event.title}<br/>
                   <span className="text-[#d8c0b9]">{event.time}</span>{" "}
                 </div>
+                <br/>
               </div>
             </div>
           ))}

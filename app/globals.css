@@ -24,25 +24,31 @@
   src: url("/fonts/BrownMonoTrialTT-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Sono";
+  src: url("/fonts/Sono[MONO,wght].ttf");
+}
+
 .font-mono {
-  font-family: "BrownMonoTrialTT";
+  font-family: "Sono";
+  font-weight: 348;
 }
 
 .blink {
-  animation: fade 3s steps(100, start) infinite;
+  animation: fade 2s steps(20, start) infinite;
 }
 
 @keyframes fade {
   0%,
   100% {
     opacity: 0;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
   50% {
     opacity: 1;
-    width: 64px;
-    height: 64px;
+    width: 24px;
+    height: 24px;
   }
 }
 

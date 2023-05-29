@@ -35,7 +35,9 @@ const theme = createTheme({
       // ...  more colors
     },
     space: {},
-    fonts: {},
+    fonts: {
+      
+    },
   },
 });
 
