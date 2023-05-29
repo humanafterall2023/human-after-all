@@ -6,13 +6,13 @@ const Schedule = () => {
       day: "SUNDAY, JUNE 4",
       events: [
         {
-          time: "Cursorless (4 PM)",
-          title: "Pokey Rule",
+          time: "Coding A New World (4 PM)",
+          title: "Pokey Rule (Cursorless), Ben Reinhrdt (Speculative Technologies)",
           description: "Description for Event 1",
         },
         {
-          time: "Robotics (5 PM)",
-          title: "Ben Reinhardt",
+          time: "Holography, Cryptography, Pornography and the Surreal AI Art Process (6 PM)",
+          title: "Sarah Meyohas",
           description: "Description for Event 2",
         },
       ],
@@ -21,8 +21,18 @@ const Schedule = () => {
       day: "MONDAY, JUNE 5",
       events: [
         {
-          time: "Film's Future (5 PM)",
-          title: "Eric Kohn",
+          time: "Surrealism, and the Potentials of Future Storytelling (5 PM)",
+          title: "Eric Kohn (Indiewire), Isabelle Sandoval, Mary Harron, and Henry Joost",
+          description: "Description for Event 1",
+        },
+        {
+          time: "On working with an AI on script (? PM)",
+          title: "Mads Damsbo x Piotr Winiewicz",
+          description: "Description for Event 1",
+        },
+        {
+          time: "The law and ethics of AI and IP (? PM)",
+          title: "Marisa and Jim Janowitz",
           description: "Description for Event 1",
         },
         {
@@ -41,12 +51,12 @@ const Schedule = () => {
       day: "TUESDAY, JUNE 6",
       events: [
         {
-          time: "Women in VR, XR, and Film (2 PM)",
+          time: "Women in VR and Film (2 PM)",
           title: "Julie Cavaliere",
           description: "Description for Event 5",
         },
         {
-          time: "New Work + AI Karaoke (6 PM)",
+          time: "New Works in AI and AI Karaoke (6 PM)",
           title: "John Fitzgerald",
           description: "Description for Event 6",
         },
@@ -55,6 +65,11 @@ const Schedule = () => {
     {
       day: "THURSDAY, JUNE 8",
       events: [
+        {
+          time: "Capture The Flag and Data Security, A Brave New World (5 PM)",
+          title: "Nisos and Enigma",
+          description: "Description for Event 7",
+        },
         {
           time: "In Search of Time (8 PM)",
           title: "Atlas V",
@@ -66,8 +81,33 @@ const Schedule = () => {
       day: "FRIDAY, JUNE 9",
       events: [
         {
-          time: "Surreality (5 - Late)",
-          title: "Daliland",
+          time: "Pressman Film (5 PM - Late)",
+          title: "Daliland Premier",
+          description: "Description for Event 8",
+        },
+      ],
+    },
+    {
+      day: "SATURDAY, JUNE 10",
+      events: [
+        {
+          time: "(All Day)",
+          title: "Transient Labs",
+          description: "Description for Event 8",
+        },
+        {
+          time: "(12 PM)",
+          title: "The Colberts, A Surreal Family",
+          description: "Description for Event 8",
+        },
+      ],
+    },
+    {
+      day: "SUNDAY, JUNE 11",
+      events: [
+        {
+          time: "(All Day)",
+          title: "Neo Futurists - Experimental Theatre",
           description: "Description for Event 8",
         },
       ],
@@ -92,7 +132,7 @@ const Schedule = () => {
       {eventsData.map((day, index) => (
         <div key={index} className="flex flex-col items-start">
           <div className="text-[#d8c0b9] text-md text-mono mt-2 mb-2">
-            {day.day}
+            <b>{day.day}</b>
           </div>
           {day.events.map((event, eventIndex) => (
             <div key={event.title} className="w-full">

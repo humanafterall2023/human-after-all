@@ -45,6 +45,17 @@ const Title = ({ handleReset, toggle, setToggle }) => {
                   className="float-right mt-2"
                 />
               </div>
+              <div className="w-full justify-center">
+              <div className="w-full border-b border-gray-300 h-1 mt-8"></div>
+              <br />
+              <div className="text-[#d8c0b9] text-center mb-4 text-mono">ABOUT</div>
+              <div className="w-full border-b border-gray-300 h-0.5"></div>
+              <div className="text-[#d8c0b9] text-mono text-sm">
+              <br/>
+              <p style={{textIndent:"20px"}}>Human After All is a week long symposium in Oculus WTC transit hub from June 4th to the 12th. We seek to explore the questions surrounding Artificial Intelligence and the myriad of ways that it has already - and will continue to - impact and enhance our human experience.</p>
+              <p style={{textIndent:"20px"}}>    Curating a range of dialogues, presentations, and interactive programs HAA brings together intersectional thought leaders and companies that help us understand the spectacular and alarming potential of AI, accepting narratives of fear and embracing the unknowable and…it will be… marvelous.</p>
+              </div>
+              </div>
               <div className="w-full border-b border-gray-300 h-1 mt-8"></div>
               <Schedule />
               <div className="w-full border-b border-gray-300 h-1 mt-8"></div>
