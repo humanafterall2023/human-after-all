@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { Configuration, OpenAIApi } from "openai";
 import { v4 as uuidv4 } from "uuid";
-import { Image } from './types';
+import { Image } from "./types";
 const imageThumbnail = require("image-thumbnail");
 
 const SUPABASE_URL = "https://qyuvqrplepmjcnidbglg.supabase.co";
@@ -27,18 +27,16 @@ export const createImage = async (input: Image) => {
   try {
     input.response1 = input.response1.split(" ")[0];
     const openai = new OpenAIApi(configuration);
-    const ARTISTS = [
-      'Van Gogh',
-    ];
+    const ARTISTS = ["Van Gogh"];
     const artist = ARTISTS[Math.floor(Math.random() * ARTISTS.length)];
 
     const TIMES = [
-      'morning',
-      'sunrise',
-      'afternoon',
-      'sunset',
-      'evening',
-      'nighttime'
+      "morning",
+      "sunrise",
+      "afternoon",
+      "sunset",
+      "evening",
+      "nighttime",
     ];
     const time = TIMES[Math.floor(Math.random() * TIMES.length)];
     const response = await openai.createImage({

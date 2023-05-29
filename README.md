@@ -30,4 +30,5 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Render
+
 Pushes to main are automatically deployed to render. It takes about 10-15 min to update the live site, which is available at `http://human-after-all.render.com`

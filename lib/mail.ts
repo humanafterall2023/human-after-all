@@ -1,19 +1,19 @@
-import { Image } from './types';
+import { Image } from "./types";
 const DEFAULT_LIST_ID = "67a17bcb52";
 const SENDER_ADDRESS = "humanafterall2023@gmail.com";
 
-const MailchimpListAPI = require('mailchimp-api-v3');
-const SendGridAPI = require('@sendgrid/mail')
+const MailchimpListAPI = require("mailchimp-api-v3");
+const SendGridAPI = require("@sendgrid/mail");
 
 export const sendEmail = async (image: Image) => {
   try {
-    SendGridAPI.setApiKey(process.env.SENDGRID_API_KEY)
+    SendGridAPI.setApiKey(process.env.SENDGRID_API_KEY);
     const message = {
       to: image.userEmail,
       from: SENDER_ADDRESS,
-      subject: 'Human After All',
-      text: 'Hello World',
-      html: '<strong>Hello World</strong>',
+      subject: "Human After All",
+      text: "Hello World",
+      html: "<strong>Hello World</strong>",
     };
     const response = await SendGridAPI.send(message);
   } catch (error) {
@@ -26,7 +26,7 @@ export const addUserToList = async (email: string) => {
     const mailchimp = new MailchimpListAPI(process.env.MAILCHIMP_API_KEY!);
     const response = await mailchimp.post(`/lists/${DEFAULT_LIST_ID}/members`, {
       email_address: email,
-      status: 'subscribed'
+      status: "subscribed",
     });
   } catch (error) {
     console.error("Error adding user to list");

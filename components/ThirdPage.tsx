@@ -24,8 +24,6 @@ const ThirdPage = ({ navigateToPage, currentPageIndex }) => {
       navigateToPage(currentPageIndex + 1);
       console.log("enter press here! " + e.target.value);
       e.preventDefault();
-      
-
     }
   };
 
@@ -34,7 +32,7 @@ const ThirdPage = ({ navigateToPage, currentPageIndex }) => {
       <div className="w-80 mb-40">
         <div className="input-container rounded bg-black relative mb-12 w-full">
           <div className="text-xs text-left font-mono font-thin text-[#d8c0b9] mb-2">
-          Who is your favorite painter?
+            Who is your favorite painter?
           </div>
           <Input
             autoFocus

@@ -3,7 +3,6 @@ import { useMemo } from "react";
 
 // @ts-ignore
 const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
-  
   const { value, reset, bindings } = useInput("");
 
   const helper = useMemo(() => {
@@ -31,9 +30,10 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
     <>
       <div className="w-80 mb-40">
         <div className="input-container rounded bg-black relative mb-12 w-full">
-        <div className="text-xs text-left font-mono font-thin text-[#d8c0b9] mb-2">
-          Hello, Human. Type a word that describes humans in New York<span style={{fontFamily:"courier"}}>:</span>
-        </div>
+          <div className="text-xs text-left font-mono font-thin text-[#d8c0b9] mb-2">
+            Hello, Human. Type a word that describes humans in New York
+            <span style={{ fontFamily: "courier" }}>:</span>
+          </div>
           <Input
             style={{ textAlign: "left", margin: "0" }}
             autoFocus

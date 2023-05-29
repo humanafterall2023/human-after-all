@@ -5,14 +5,14 @@ import Info from "./Info";
 
 // @ts-ignore
 const Title = ({ handleReset, toggle, setToggle }) => {
-
-
   return (
     <div className="mt-16 w-full mb-8">
       <div className="text-xl text-left text-[#d8c0b9] font-bold mb-4 flex flex-row justify-between">
-        <div onClick={() => {
-          handleReset()
-          }}>
+        <div
+          onClick={() => {
+            handleReset();
+          }}
+        >
           HUMAN AFTER ALL
         </div>
         <br />
@@ -21,10 +21,11 @@ const Title = ({ handleReset, toggle, setToggle }) => {
         </div>
       </div>
 
-      {toggle && <div className="w-80 mb-40">
+      {toggle && (
+        <div className="w-80 mb-40">
           <div className="text-sm text-left text-[#d8c0b9] font-mono">
-            The Surreal Matrix of AI, 
-            <br/>
+            The Surreal Matrix of AI,
+            <br />
             Art, and the Motion Picture
           </div>
 
@@ -45,12 +46,13 @@ const Title = ({ handleReset, toggle, setToggle }) => {
                 />
               </div>
               <div className="w-full border-b border-gray-300 h-1 mt-8"></div>
-              <Schedule/>
+              <Schedule />
               <div className="w-full border-b border-gray-300 h-1 mt-8"></div>
-              <Info/>
+              <Info />
             </>
           }
-        </div>}
+        </div>
+      )}
     </div>
   );
 };

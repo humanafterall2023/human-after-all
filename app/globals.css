@@ -33,9 +33,17 @@
 }
 
 @keyframes fade {
-  0%,100% { opacity: 0; width: 20px; height: 20px}
-  50% { opacity: 1; width: 64px; height: 64px }
-  
+  0%,
+  100% {
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+  }
+  50% {
+    opacity: 1;
+    width: 64px;
+    height: 64px;
+  }
 }
 
 body {

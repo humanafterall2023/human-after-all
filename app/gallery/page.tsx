@@ -62,35 +62,44 @@ const Gallery = () => {
 
   return (
     <NextUIProvider theme={theme}>
-    <main className="flex flex-col items-center bg-black min-h-screen p-8">
-      <a className="text-xl text-center text-[#d8c0b9] font-bold" href="/">
-        <i>HUMAN, &nbsp; AFTER ALL</i>
-      </a>
-    <div className="absolute top-20">
-      <h1 className="text-center">Gallery</h1>
-      {!selectedImage ? (
-        <div className="grid grid-cols-3 gap-4">
-          {images.map((image) => (
-            // @ts-ignore
-            <img key={image.id} src={image.thumbnailUrl} alt={image.response1} onClick={() => handleClick(image)} />
-          ))}
-        </div>
-      ) : (
-        <div className="mt-4">
-          <button className="mb-4 ml-4 text-right" onClick={handleBack}>
-            Back
-          </button>
-          {isLoading ? (
-            <div>Loading...</div> // Display loading state while the image is loading
+      <main className="flex flex-col items-center bg-black min-h-screen p-8">
+        <a className="text-xl text-center text-[#d8c0b9] font-bold" href="/">
+          <i>HUMAN, &nbsp; AFTER ALL</i>
+        </a>
+        <div className="absolute top-20">
+          <h1 className="text-center">Gallery</h1>
+          {!selectedImage ? (
+            <div className="grid grid-cols-3 gap-4">
+              {images.map((image) => (
+                // @ts-ignore
+                <img
+                  key={image.id}
+                  src={image.thumbnailUrl}
+                  alt={image.response1}
+                  onClick={() => handleClick(image)}
+                />
+              ))}
+            </div>
           ) : (
-            // @ts-ignore
-            <img src={selectedImage.imageUrl} alt={selectedImage.response1} className="mx-auto max-w-full" />
+            <div className="mt-4">
+              <button className="mb-4 ml-4 text-right" onClick={handleBack}>
+                Back
+              </button>
+              {isLoading ? (
+                <div>Loading...</div> // Display loading state while the image is loading
+              ) : (
+                // @ts-ignore
+                <img
+                  src={selectedImage.imageUrl}
+                  alt={selectedImage.response1}
+                  className="mx-auto max-w-full"
+                />
+              )}
+            </div>
           )}
         </div>
-      )}
-    </div>
       </main>
-      </NextUIProvider>
+    </NextUIProvider>
   );
 };
 

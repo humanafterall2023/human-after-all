@@ -3,7 +3,11 @@ import { Input, useInput, Grid, FormElement } from "@nextui-org/react";
 
 // @ts-ignore
 const EmailInput = ({ navigateToPage, currentPageIndex }) => {
-  const { value: emailValue, reset: resetEmail, bindings: emailBindings } = useInput("");
+  const {
+    value: emailValue,
+    reset: resetEmail,
+    bindings: emailBindings,
+  } = useInput("");
 
   const validateEmail = (value: string) => {
     return value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i);
@@ -36,7 +40,7 @@ const EmailInput = ({ navigateToPage, currentPageIndex }) => {
   return (
     <Input
       {...emailBindings}
-      style={{ margin: "0"  }}
+      style={{ margin: "0" }}
       className="bg-black font-mono top-0 left-0 right-0 bottom-0"
       aria-label="Enter your email to claim your art"
       clearable

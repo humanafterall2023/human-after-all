@@ -85,10 +85,12 @@ const Info = () => {
 
   return (
     <div className="w-full justify-center">
-      <br/>
+      <br />
       <div className="text-[#d8c0b9] text-center mb-4 text-mono">INFO</div>
       <div className="w-full border-b border-gray-300 h-0.5"></div>
-      <div className="text-[#749EA1] mt-4 mb-4 text-mono">A BICYCLE FOR THE MIND</div>
+      <div className="text-[#749EA1] mt-4 mb-4 text-mono">
+        A BICYCLE FOR THE MIND
+      </div>
       <div className="text-[#d8c0b9] text-mono text-sm">
         One day, long ago, our Ancestor picked up a rock, fashioned a tool, and
         shifted our timeline forever. Just like that, we rocketed forth.
@@ -111,8 +113,8 @@ const Info = () => {
         <br />
         At Calatrava’s WTC Ocuclus this June, Human After All will discuss these
         tools, and what they mean for our future.
-        <br/>
-        <br/>
+        <br />
+        <br />
         <a href="mailto:humanafterallai@gmail.com">CONTACT US</a>
       </div>
     </div>

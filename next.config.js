@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    generateEtags: false,
-}
+  generateEtags: false,
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

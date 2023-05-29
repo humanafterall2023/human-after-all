@@ -73,11 +73,10 @@ const Schedule = () => {
       ],
     },
   ];
-  
 
   const [activeAccordion, setActiveAccordion] = useState(null);
 
-    // @ts-ignore
+  // @ts-ignore
   const handleAccordionClick = (eventIndex) => {
     setActiveAccordion((prevAccordion) =>
       prevAccordion === eventIndex ? null : eventIndex
@@ -86,17 +85,23 @@ const Schedule = () => {
 
   return (
     <div className="w-full justify-center">
-      <br/>
+      <br />
       <div className="text-[#d8c0b9] text-center">SCHEDULE</div>
-      <br/>
+      <br />
       <div className="w-full border-b border-gray-300 h-0.5"></div>
       {eventsData.map((day, index) => (
         <div key={index} className="flex flex-col items-start">
-          <div className="text-[#d8c0b9] text-md text-mono mt-2 mb-2">{day.day}</div>
+          <div className="text-[#d8c0b9] text-md text-mono mt-2 mb-2">
+            {day.day}
+          </div>
           {day.events.map((event, eventIndex) => (
             <div key={event.title} className="w-full">
               <div onClick={() => handleAccordionClick(eventIndex)}>
-                <div className="text-[#749EA1]"> • {event.title}&nbsp; - &nbsp; <span className="text-[#d8c0b9]">{event.time}</span> </div>
+                <div className="text-[#749EA1]">
+                  {" "}
+                  • {event.title}&nbsp; - &nbsp;{" "}
+                  <span className="text-[#d8c0b9]">{event.time}</span>{" "}
+                </div>
               </div>
             </div>
           ))}
