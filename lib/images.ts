@@ -28,7 +28,7 @@ export const createImage = async (input: Image) => {
     input.response1 = input.response1.split(" ")[0];
     const openai = new OpenAIApi(configuration);
     const ARTISTS = [
-      'Dali',
+      'Van Gogh',
     ];
     const artist = ARTISTS[Math.floor(Math.random() * ARTISTS.length)];
 

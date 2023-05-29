@@ -28,7 +28,7 @@ const LastPage = ({ setToggle }) => {
 
 
   useEffect(() => {
-    fetch("/api/gallery", { next: { revalidate: 0 } , cache: 'no-store' })
+    fetch("/api/gallery", { method: "POST", body: "{}" })
       .then((response) => response.json())
       .then((data) => setImages(data))
       .catch((error) => console.error("Error:", error));
