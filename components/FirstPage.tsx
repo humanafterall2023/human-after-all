@@ -31,8 +31,8 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
       <div className="w-80 mb-40">
         <div className="input-container rounded bg-black relative mb-12 w-full">
           <div className="text-xs text-left font-mono font-thin text-[#d8c0b9] mb-2">
-            Hello, Human. What image comes to mind when you think of the future of AI
-            <span style={{ fontFamily: "courier" }}>?:</span>
+            Hello, Human. Type a word that describes humans in New York
+            <span style={{ fontFamily: "courier" }}>:</span>
           </div>
           <Input
             style={{ textAlign: "left", margin: "0" }}
