@@ -11,3 +11,5 @@ export async function POST(request: Request) {
   // await addUserToList(result.userEmail);
   return NextResponse.json(result);
 }
+
+export const fetchCache = 'force-no-store';

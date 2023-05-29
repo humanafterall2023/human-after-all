@@ -5,3 +5,5 @@ export async function GET(request: Request) {
   const images = await getImages();
   return NextResponse.json(images);
 }
+
+export const fetchCache = 'force-no-store';
