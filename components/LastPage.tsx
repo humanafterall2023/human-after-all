@@ -65,9 +65,9 @@ const LastPage = ({ setToggle }) => {
       <div className="w-80">
         <div className="input-container rounded bg-black relative w-full flex-row snap-center">
           <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2" style={{fontSize:"1.1rem", fontWeight: 260, letterSpacing: "2px"}}>
-            {isOpenAILoading ? "I'm working..." : imageResponse}
-            <br/> 
-            <br/>
+            {isOpenAILoading ? "" : imageResponse}
+            {!isOpenAILoading && <br/> }
+            {!isOpenAILoading && <br/> }
           </div>
           {isOpenAILoading ? (
             <div
@@ -90,50 +90,48 @@ const LastPage = ({ setToggle }) => {
               />
             </div>
           ) : (
-            <img src={imageUrl} alt="Oculus Image" />
+            <img src={imageUrl} alt="Oculus Image" style={{borderRadius: "2px", border: "1px solid #d8c0b9"}} />
           )}
-          <br/><br/>
-          <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2">
-            I'll keep you posted on{" "}
-            <span style={{cursor: "pointer", color:"#749EA1" }}onClick={() => setToggle(true)}>our events</span>.
-          </div>
-          <br />
-          <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2">
-            Here are some dreams of others:
-          </div>
-          <br />
-          {!selectedImage ? (
-            <div className="grid grid-cols-3 gap-4">
-              {images.map((image) => (
-                // @ts-ignore
-                <img
-                  key={image.id}
-                  src={image.thumbnailUrl}
-                  alt={image.response1}
-                  onClick={() => handleClick(image)}
-                />
-              ))}
+          {!isOpenAILoading && <>
+            <br/><br/>
+            <br />
+            <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2" style={{fontSize:"1.1rem", fontWeight: 260, letterSpacing: "2px"}}>
+              HUMANS
             </div>
-          ) : (
-            <div className="mt-4">
-              <button className="mb-4 ml-4 text-right" onClick={handleBack}>
-                Back to Gallery
-              </button>
-              {isLoading ? (
-                <div>Loading...</div> // Display loading state while the image is loading
-              ) : (
-                // @ts-ignore
-                <>
+            <br />
+            {!selectedImage ? (
+              <div className="grid grid-cols-3 gap-4">
+                {images.map((image) => (
+                  // @ts-ignore
                   <img
-                    src={selectedImage.imageUrl}
-                    alt={selectedImage.response1}
-                    className="mx-auto max-w-full"
+                    key={image.id}
+                    src={image.thumbnailUrl}
+                    alt={image.response1}
+                    onClick={() => handleClick(image)}
                   />
-                  <i>{selectedImage.response1}</i>
-                </>
-              )}
-            </div>
-          )}
+                ))}
+              </div>
+            ) : (
+              <div className="mt-4">
+                <button className="mb-4 ml-4 text-right" onClick={handleBack}>
+                  Back to Gallery
+                </button>
+                {isLoading ? (
+                  <div>Loading...</div> // Display loading state while the image is loading
+                ) : (
+                  // @ts-ignore
+                  <>
+                    <img
+                      src={selectedImage.imageUrl}
+                      alt={selectedImage.response1}
+                      className="mx-auto max-w-full"
+                    />
+                    <i>{selectedImage.response1}</i>
+                  </>
+                )}
+              </div>
+            )}
+          </>}
         </div>
       </div>
     </>

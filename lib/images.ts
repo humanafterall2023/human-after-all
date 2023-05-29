@@ -42,7 +42,7 @@ export const createImage = async (input: Image) => {
     ];
     const time = TIMES[Math.floor(Math.random() * TIMES.length)];
     const response = await openai.createImage({
-      prompt: `A photograph of a ${input.response1} human in New York City, ${time}, in the style of ${artist}`,
+      prompt: `A photograph of a human in New York City, ${input.response1}, ${time}, in the style of ${artist}`,
       n: 1,
       size: "512x512",
     });
