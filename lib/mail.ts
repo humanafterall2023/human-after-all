@@ -12,8 +12,8 @@ export const sendEmail = async (image: Image) => {
       to: image.userEmail,
       from: SENDER_ADDRESS,
       subject: "Human After All",
-      text: "Hello World",
-      html: "<strong>Hello World</strong>",
+      text: "Hello Human",
+      html: `Here's what we created. <br/> <img src="${image.imageUrl}"/>`,
     };
     const response = await SendGridAPI.send(message);
   } catch (error) {

@@ -4,6 +4,9 @@ import EmailInput from "./EmailInput";
 
 // @ts-ignore
 const EmailPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
+  if (localStorage.getItem("email") !== undefined) {
+    navigateToPage(currentPageIndex + 1);
+  }
   return (
     <>
       <div className="w-80">

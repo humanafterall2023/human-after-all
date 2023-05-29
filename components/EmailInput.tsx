@@ -37,6 +37,14 @@ const EmailInput = ({ navigateToPage, currentPageIndex }) => {
     }
   };
 
+  //@ts-ignore
+  const onBlur = async (e) => {
+    if (validateEmail(emailValue)) {
+      localStorage.setItem("email", emailValue);
+      navigateToPage(currentPageIndex + 1);
+    }
+  };
+
   return (
     <Input
       {...emailBindings}
@@ -63,6 +71,7 @@ const EmailInput = ({ navigateToPage, currentPageIndex }) => {
       rounded={false}
       bordered={true}
       onKeyPress={handleEmailInput}
+      onBlur={onBlur}
     />
   );
 };
