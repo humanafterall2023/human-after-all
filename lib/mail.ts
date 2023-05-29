@@ -1,4 +1,4 @@
-import { Image } from './images';
+import { Image } from './types';
 const DEFAULT_LIST_ID = "67a17bcb52";
 const SENDER_ADDRESS = "humanafterall2023@gmail.com";
 

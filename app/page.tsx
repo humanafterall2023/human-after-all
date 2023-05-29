@@ -4,12 +4,8 @@ import * as React from "react";
 import { motion } from "framer-motion";
 
 import { createTheme, NextUIProvider } from "@nextui-org/react";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import FirstPage from "@/components/FirstPage";
-import Schedule from "@/components/Schedule";
-import Info from "@/components/Info";
-import SecondPage from "@/components/SecondPage";
-import ThirdPage from "@/components/ThirdPage";
 import EmailPage from "@/components/EmailPage";
 import LastPage from "@/components/LastPage";
 
@@ -43,7 +39,7 @@ const theme = createTheme({
   },
 });
 
-const pages = [FirstPage, SecondPage, ThirdPage, EmailPage, LastPage];
+const pages = [FirstPage, EmailPage, LastPage];
 
 export default function Home() {
   const [toggle, setToggle] = useState(false);
@@ -64,11 +60,10 @@ export default function Home() {
       <PageComponent
         navigateToPage={navigateToPage}
         currentPageIndex={currentPageIndex}
+        setToggle={setToggle}
       />
     );
   };
-
-  
 
   return (
     <NextUIProvider theme={theme}>

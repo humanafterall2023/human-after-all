@@ -20,41 +20,9 @@ const SecondPage = ({ navigateToPage, currentPageIndex }) => {
   // @ts-ignore
   const handleKeyPress = async (e) => {
     if (e.key === "Enter") {
-        navigateToPage(currentPageIndex + 1);
-      console.log("enter press here! " + e.target.value);
+      localStorage.setItem("prompt2", e.target.value);
+      navigateToPage(currentPageIndex + 1);
       e.preventDefault();
-
-      const input = {
-        id: "imageId",
-        response1: "AAA",
-        response2: "BBBB",
-        response3: "CCCCC",
-        userEmail: "humanafterall2023@gmail.com",
-      };
-
-      try {
-        const response = await fetch("/api/create_image", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            input,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Error generating image");
-        }
-
-        const result = await response.json();
-        console.log("RESULT", result);
-
-        // Handle the result as needed
-      } catch (error) {
-        console.error(error);
-        // Handle the error appropriately
-      }
     }
   };
 
@@ -63,10 +31,7 @@ const SecondPage = ({ navigateToPage, currentPageIndex }) => {
       <div className="w-80 mb-40">
         <div className="input-container rounded bg-black relative mb-12 w-full">
           <div className="text-xs text-left font-mono font-thin text-[#d8c0b9] mb-2">
-            What memory first comes to mind when you think of love? 
-            <br/>
-            <br/>
-            Describe it in rich detail.
+            Type your favorite time of day:
           </div>
           <Input
             autoFocus

@@ -1,80 +1,111 @@
-import { Input, useInput, Spacer } from "@nextui-org/react";
-import { useMemo } from "react";
-import EmailInput from "./EmailInput";
-
+import { useEffect, useState } from "react";
+import { Image as ImageInfo} from "@/lib/types";
 // @ts-ignore
-const LastPage = () => {
-  const { value, reset, bindings } = useInput("");
+const LastPage = ({ setToggle }) => {
+  const [images, setImages] = useState<ImageInfo[]>([]);
+  const [selectedImage, setSelectedImage] = useState<ImageInfo | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [imageUrl, setImageUrl] = useState("large.png")
 
-  const helper = useMemo(() => {
-    if (!value)
-      return {
-        text: "",
-        color: "",
+  useEffect(() => {
+    const input = {
+        response1: localStorage.getItem("prompt1"),
+        response2: localStorage.getItem("prompt2"),
+        response3: localStorage.getItem("prompt3"),
+        userEmail: localStorage.getItem("email"),
       };
-    return {
-      text: "Enter a valid email",
-      color: "error",
-    };
-  }, [value]);
+      const response = fetch("/api/create_image", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(input),
+      })
+      .then((d) => d.json().then(result => {
+        setImageUrl(result.imageUrl);
+      }));
+}, []);
+
+
+  useEffect(() => {
+    fetch("/api/gallery", { next: { revalidate: 0 } , cache: 'no-store' })
+      .then((response) => response.json())
+      .then((data) => setImages(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
 
   // @ts-ignore
-  const handleKeyPress = async (e) => {
-    if (e.key === "Enter") {
-      console.log("enter press here! " + e.target.value);
-      e.preventDefault();
-
-      const input = {
-        id: "imageId",
-        response1: "AAA",
-        response2: "BBBB",
-        response3: "CCCCC",
-        userEmail: "humanafterall2023@gmail.com",
-      };
-
-      try {
-        const response = await fetch("/api/create_image", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            input,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Error generating image");
-        }
-
-        const result = await response.json();
-        console.log("RESULT", result);
-
-        // Handle the result as needed
-      } catch (error) {
-        console.error(error);
-        // Handle the error appropriately
-      }
-    }
+  const handleClick = (image) => {
+    setIsLoading(true); // Set loading state to true
+    setSelectedImage(null); // Clear previous selected image
+    const img = new Image();
+    img.src = image.imageUrl;
+    img.onload = () => {
+      setSelectedImage(image);
+      setIsLoading(false); // Set loading state to false when the image has loaded
+    };
   };
+
+  const handleBack = () => {
+    setSelectedImage(null);
+  };
+
+  const isOpenAILoading = imageUrl === "large.png"
 
   return (
     <>
       <div className="w-80">
         <div className="input-container rounded bg-black relative w-full flex-row text-center snap-center">
           <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2">
-            Thanks for dreaming with us...
+            {isOpenAILoading ? "I'm working..." : "Here's what I created:"}
           </div>
-          <img
-            src="large.png"
+          {
+            isOpenAILoading ? 
+            <div style={{height: "200px", width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}}>
+              <div className="blink" style={{
+                backgroundColor: "white",
+                width: 48,
+                height: 48,
+                borderRadius: "50%"
+              }}/>
+            </div>
+            : <img
+            src={imageUrl}
             alt="Oculus Image"
-            className="border-gray-600 border rounded mt-2 text-center p-20 snap-center "
-          />
-          <div className="text-xs font-mono font-thin text-[#d8c0b9] mt-2 mb-2">
-            Tap your dream to make it an NFT :)
-            <br />
-            Surreal, right?
+            />
+          }
+          <i>{localStorage.getItem("prompt1")}</i>
+          <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2">
+            I'll keep you posted on <a onClick={() => setToggle(true)}>our events</a>.
           </div>
+          <br/>
+          <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2">
+            Here are some dreams of others:
+          </div>
+          <br/>
+          {!selectedImage ? (
+            <div className="grid grid-cols-3 gap-4">
+              {images.map((image) => (
+                // @ts-ignore
+                <img key={image.id} src={image.thumbnailUrl} alt={image.response1} onClick={() => handleClick(image)} />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-4">
+              <button className="mb-4 ml-4 text-right" onClick={handleBack}>
+                Back
+              </button>
+              {isLoading ? (
+                <div>Loading...</div> // Display loading state while the image is loading
+              ) : (
+                // @ts-ignore
+                <>
+                  <img src={selectedImage.imageUrl} alt={selectedImage.response1} className="mx-auto max-w-full" />
+                  <i>{selectedImage.response1}</i>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>

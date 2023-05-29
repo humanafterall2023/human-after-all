@@ -26,8 +26,8 @@ const EmailInput = ({ navigateToPage, currentPageIndex }) => {
   const handleEmailInput = (e) => {
     if (e.key === "Enter") {
       if (validateEmail(emailValue)) {
+        localStorage.setItem("email", emailValue);
         navigateToPage(currentPageIndex + 1);
-        console.log("Email Inputted: " + emailValue);
       }
       e.preventDefault();
     }
@@ -40,6 +40,7 @@ const EmailInput = ({ navigateToPage, currentPageIndex }) => {
       className="bg-black font-mono top-0 left-0 right-0 bottom-0"
       aria-label="Enter your email to claim your art"
       clearable
+      autoFocus
       shadow={false}
       onClearClick={resetEmail}
       css={{

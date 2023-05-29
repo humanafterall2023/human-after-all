@@ -63,8 +63,8 @@ const Gallery = () => {
   return (
     <NextUIProvider theme={theme}>
     <main className="flex flex-col items-center bg-black min-h-screen p-8">
-    <a className="text-xl text-center text-[#d8c0b9] font-bold" href="/">
-        <i>WE'RE HUMAN, &nbsp; AFTER ALL</i>
+      <a className="text-xl text-center text-[#d8c0b9] font-bold" href="/">
+        <i>HUMAN, &nbsp; AFTER ALL</i>
       </a>
     <div className="absolute top-20">
       <h1 className="text-center">Gallery</h1>

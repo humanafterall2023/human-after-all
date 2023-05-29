@@ -13,7 +13,7 @@ const Title = ({ handleReset, toggle, setToggle }) => {
         <div onClick={() => {
           handleReset()
           }}>
-          <i>HUMAN AFTER ALL</i>
+          HUMAN AFTER ALL
         </div>
         <br />
         <div className="mt-0.5" onClick={() => setToggle(!toggle)}>

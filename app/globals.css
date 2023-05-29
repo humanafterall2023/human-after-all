@@ -16,6 +16,28 @@
   }
 }
 
+@font-face {
+  font-family: "BrownMonoTrialTT";
+  src: url("/fonts/BrownMonoTrialTT-Italic.ttf");
+  src: url("/fonts/BrownMonoTrialTT-Light.ttf");
+  src: url("/fonts/BrownMonoTrialTT-LightItalic.ttf");
+  src: url("/fonts/BrownMonoTrialTT-Regular.ttf");
+}
+
+.font-mono {
+  font-family: "BrownMonoTrialTT-Light";
+}
+
+.blink {
+  animation: fade 3s steps(100, start) infinite;
+}
+
+@keyframes fade {
+  0%,100% { opacity: 0; width: 20px; height: 20px}
+  50% { opacity: 1; width: 64px; height: 64px }
+  
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
