@@ -5,17 +5,6 @@ import { useMemo } from "react";
 const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
   const { value, reset, bindings } = useInput("");
 
-  const helper = useMemo(() => {
-    if (!value)
-      return {
-        text: "",
-        color: "",
-      };
-    return {
-      text: "Enter a valid email",
-      color: "error",
-    };
-  }, [value]);
 
   // @ts-ignore
   const handleKeyPress = async (e) => {
@@ -51,10 +40,9 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
             }}
             status="primary"
             helperColor="primary"
-            helperText={helper.text}
             width="100%"
             rounded={false}
-            bordered={false}
+            bordered={true}
             onKeyPress={handleKeyPress}
           />
         </div>

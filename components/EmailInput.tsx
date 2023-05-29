@@ -61,7 +61,7 @@ const EmailInput = ({ navigateToPage, currentPageIndex }) => {
       type="email"
       width="100%"
       rounded={false}
-      bordered={false}
+      bordered={true}
       onKeyPress={handleEmailInput}
     />
   );
