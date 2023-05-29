@@ -39,10 +39,13 @@ const EmailInput = ({ navigateToPage, currentPageIndex }) => {
 
   //@ts-ignore
   const onBlur = async (e) => {
-    if (validateEmail(emailValue)) {
+    if (validateEmail(emailValue) && !localStorage.getItem("email")) {
       localStorage.setItem("email", emailValue);
       navigateToPage(currentPageIndex + 1);
+    } else {
+      e.target.focus();
     }
+    e.preventDefault();
   };
 
   return (
