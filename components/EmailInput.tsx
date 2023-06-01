@@ -54,10 +54,8 @@ const EmailInput = ({ navigateToPage, currentPageIndex }) => {
       style={{ textAlign: "left", margin: "0", border: "0.5px solid #d8c0b9", borderRadius: "2px", padding: "4px" }}
       className="bg-black font-mono top-0 left-0 right-0 bottom-0"
       aria-label="Enter your email to claim your art"
-      clearable
       autoFocus
       shadow={false}
-      onClearClick={resetEmail}
       css={{
         $$inputColor: "black",
         borderRadius: "$pill",
