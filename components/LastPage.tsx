@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Image as ImageInfo } from "@/lib/types";
 // @ts-ignore
-const LastPage = ({ setToggle }) => {
+const LastPage = ({ navigateToPage, setToggle }) => {
   const [images, setImages] = useState<ImageInfo[]>([]);
   const [selectedImage, setSelectedImage] = useState<ImageInfo | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -9,6 +9,10 @@ const LastPage = ({ setToggle }) => {
   const [imageResponse, setImageResponse] = useState("");
 
   useEffect(() => {
+    if (localStorage.getItem("prompt1") === "") {
+      navigateToPage(0);
+      return;
+    }
     const input = {
       response1: localStorage.getItem("prompt1"),
       response2: localStorage.getItem("prompt2"),

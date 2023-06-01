@@ -77,6 +77,7 @@ export default function Home() {
           className="flex flex-col items-center flex-1"
         >
           <Title
+            navigateToPage={navigateToPage}
             handleReset={handleReset}
             toggle={toggle}
             setToggle={setToggle}

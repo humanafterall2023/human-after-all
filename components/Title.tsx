@@ -4,7 +4,7 @@ import { Image as ImageInfo } from "@/lib/types";
 import { useState, useEffect } from "react";
 import { FaHome } from "react-icons/fa"
 // @ts-ignore
-const Title = ({ handleReset, toggle, setToggle }) => {
+const Title = ({ navigateToPage, handleReset, toggle, setToggle }) => {
   const [images, setImages] = useState<ImageInfo[]>([]);
   useEffect(() => {
     fetch("/api/gallery", {
@@ -26,6 +26,7 @@ const Title = ({ handleReset, toggle, setToggle }) => {
         <div
           style={{cursor: "pointer"}}
           onClick={() => {
+            localStorage.setItem("prompt1", "");
             setToggle(!toggle)
           }}
         >
