@@ -100,7 +100,7 @@ const LastPage = ({ navigateToPage, setToggle }) => {
             <br/><br/>
             <br />
             <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2" style={{fontSize:"1.1rem", fontWeight: 260, letterSpacing: "2px"}}>
-              HUMANS
+              HUMANS / AI
             </div>
             <br />
             {!selectedImage ? (

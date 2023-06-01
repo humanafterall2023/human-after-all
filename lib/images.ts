@@ -26,11 +26,9 @@ export const createImage = async (input: Image) => {
   });
   try {
     input.response1 = input.response1.split(" ")[0];
+
     const openai = new OpenAIApi(configuration);
-    const ARTISTS = [
-      'Van Gogh',
-    ];
-    const artist = ARTISTS[Math.floor(Math.random() * ARTISTS.length)];
+
 
     const TIMES = [
       'morning',
@@ -42,21 +40,34 @@ export const createImage = async (input: Image) => {
     ];
     const time = TIMES[Math.floor(Math.random() * TIMES.length)];
 
-
     const LOCATIONS = [
+      'Harlem',
+      'the Apollo Theatre',
+      'the Metropolitan Museum of Art',
+      'the Guggenheim Museum',
+      'the Hudson River',
+      'the Oculus Transit Hub',
       'Grand Central Station',
       'Central Park',
-      'Brooklyn Bridge',
-      'Empire State Building',
-      'Subway',
-      'World Trade Center',
-      'Statue of Liberty',
+      'the Brooklyn Bridge',
+      'the Empire State Building',
+      'the Subway',
+      'the World Trade Center',
       'Times Square',
       'Madison Square Garden',
+      'Rockaway Beach',
+      'Coney Island',
     ];
 
-    const location = LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)];
-    const promptText = `describe an image of something a ${input.response1} person is doing in 5 words`
+    let location = ` at ${LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)]}, in New York City `;
+    let artist = "post-impressionism";
+    let item = "person";
+    if (input.response2 === "AI") {
+      item = "AI";
+      artist = "surrealism";
+      location = " in the cosmos";
+    }
+    const promptText = `describe an image of something a ${input.response1} ${item} is doing in 5 words or less`
     const promptGen = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [
@@ -64,7 +75,7 @@ export const createImage = async (input: Image) => {
       ]
     });
     const promptResponse = promptGen.data.choices[0].message?.content;
-    const finalPrompt = `A portrait photograph of a human ${promptResponse}, near ${location} in New York City, in the style of ${artist}`;
+    const finalPrompt = `An oil painting of a ${item} ${promptResponse} ${location} in the style of ${artist}`;
     console.log('prompting: ', finalPrompt);
     const response = await openai.createImage({
       prompt: finalPrompt,

@@ -26,12 +26,19 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
     e.preventDefault();
   };
 
+  const isAIPrompt = Math.random() > 0.5;
+
+  if (isAIPrompt) {
+    localStorage.setItem("prompt2", "AI");
+  } else {
+    localStorage.setItem("prompt2", "humans");
+  }
   return (
     <>
       <div className="w-80 mb-40">
         <div className="input-container rounded bg-black relative mb-12 w-full">
           <div className="text-s text-left font-mono font-thin text-[#d8c0b9] mb-4">
-            Hello :) Type a word to describe humans:
+            Hello :) Type a word to describe {isAIPrompt ? "AI" : "humans"}:
           </div>
           <Input
             style={{ textAlign: "left", margin: "0", border: "0.5px solid #d8c0b9", borderRadius: "2px", padding: "4px" }}
