@@ -44,7 +44,7 @@ const theme = createTheme({
 const pages = [FirstPage, EmailPage, LastPage];
 
 export default function Home() {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = React.useState(0);
 
   const handleReset = () => {

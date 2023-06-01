@@ -127,3 +127,15 @@ export const getImages = async () => {
   if (error) throw error;
   return data;
 };
+
+export const getPreviewImages = async () => {
+  const supabase = createClient(SUPABASE_URL, process.env.SUPABASE_SECRET_KEY!);
+  const { data, error } = await supabase
+    .from("images")
+    .select()
+    .order("created_at", { ascending: false })
+    .limit(5)
+    .returns<Image[]>();
+  if (error) throw error;
+  return data;
+};

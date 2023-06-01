@@ -1,6 +1,5 @@
 import { Input, useInput } from "@nextui-org/react";
-import { useMemo } from "react";
-
+import { Spacer } from "@nextui-org/react";
 // @ts-ignore
 const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
   const { value, reset, bindings } = useInput("");
@@ -35,10 +34,25 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
   }
   return (
     <>
-      <div className="w-80 mb-40">
-        <div className="input-container rounded bg-black relative mb-12 w-full">
+      <div className="w-80">
+          <div className="text-sm text-left text-[#d8c0b9] font-mono">
+            The Surreal Matrix of AI,
+            <br />
+            Art, and the Motion Picture
+          </div>
+          <div className="flex flex-row justify-between mt-4">
+            <div className="text-xs text-left text-[#d8c0b9] font-mono mt-2" style={{fontSize: "0.8rem"}}>
+              Oculus, NYC
+              <Spacer y={0.5} />
+              Canvas 3.0
+              <Spacer y={0.5} />
+              June 4 - 12, 2023
+            </div>
+          </div>
+          <br/>
+          <div className="input-container rounded bg-black relative mb-12 w-full">
           <div className="text-s text-left font-mono font-thin text-[#d8c0b9] mb-4">
-            Hello :) Type a word to describe {isAIPrompt ? "AI" : "humans"}:
+            Hello :) Type a word to describe {isAIPrompt ? "artificial intelligence" : "humans"}:
           </div>
           <Input
             style={{ textAlign: "left", margin: "0", border: "0.5px solid #d8c0b9", borderRadius: "2px", padding: "4px" }}
@@ -62,6 +76,11 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
             onKeyPress={handleKeyPress}
             onBlur={onBlur}
           />
+          <br/>
+          <br/>
+          <button className="mb-4 text-right text-mono font-mono font-thin" onClick={() => {
+            setToggle(true);
+          }} style={{color: "#d8c0b9"}}>+ MORE INFO</button>
         </div>
       </div>
     </>

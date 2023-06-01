@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Image as ImageInfo } from "@/lib/types";
+import { FaInfoCircle } from "react-icons/fa";
 // @ts-ignore
 const LastPage = ({ navigateToPage, setToggle }) => {
   const [images, setImages] = useState<ImageInfo[]>([]);
@@ -69,7 +70,7 @@ const LastPage = ({ navigateToPage, setToggle }) => {
       <div className="w-80">
         <div className="input-container rounded bg-black relative w-full flex-row snap-center">
           <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2" style={{fontSize:"1.1rem", fontWeight: 260, letterSpacing: "2px"}}>
-            {isOpenAILoading ? "" : imageResponse}
+            {isOpenAILoading ? "" : <><br/>{imageResponse}</>}
             {!isOpenAILoading && <br/> }
             {!isOpenAILoading && <br/> }
           </div>
@@ -94,13 +95,22 @@ const LastPage = ({ navigateToPage, setToggle }) => {
               />
             </div>
           ) : (
-            <img src={imageUrl} alt="Oculus Image" style={{borderRadius: "2px", border: "1px solid #d8c0b9"}} />
+            <>
+              <img src={imageUrl} alt="Oculus Image" style={{borderRadius: "2px", border: "1px solid #d8c0b9"}} />
+              <br/>
+              <button className="mb-4 text-right text-mono font-mono font-thin" onClick={() => {
+                navigateToPage(0);
+              }} style={{color: "#d8c0b9"}}>+ CREATE ANOTHER</button>
+              <br/>
+              <button onClick={() => setToggle(true)} className="mb-4 text-right text-mono font-mono font-thin" style={{color: "#d8c0b9"}}>+ EVENT INFO</button>
+              
+            </>
           )}
           {!isOpenAILoading && <>
-            <br/><br/>
-            <br />
+            <br/>
+            <br/>
             <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2" style={{fontSize:"1.1rem", fontWeight: 260, letterSpacing: "2px"}}>
-              HUMANS / AI
+              GALLERY
             </div>
             <br />
             {!selectedImage ? (
@@ -134,7 +144,7 @@ const LastPage = ({ navigateToPage, setToggle }) => {
                       className="mx-auto max-w-full"
                     />
                     <br/>
-                    <button className="mb-4 text-right text-mono font-mono font-thin" style={{color: "#d8c0b9"}} onClick={handleBack}>GALLERY</button>
+                    <button className="mb-4 text-right text-mono font-mono font-thin" style={{color: "#d8c0b9"}} onClick={handleBack}>&#60; GALLERY</button>
                   </>
                 )}
               </div>
