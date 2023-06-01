@@ -64,7 +64,7 @@ export const createImage = async (input: Image) => {
       ]
     });
     const promptResponse = promptGen.data.choices[0].message?.content;
-    const finalPrompt = `A portrait photograph of a human ${promptResponse}, ${location} in New York City, in the style of ${artist}`;
+    const finalPrompt = `A portrait photograph of a human ${promptResponse}, near ${location} in New York City, in the style of ${artist}`;
     console.log('prompting: ', finalPrompt);
     const response = await openai.createImage({
       prompt: finalPrompt,
