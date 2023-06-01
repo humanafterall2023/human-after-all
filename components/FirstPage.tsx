@@ -1,8 +1,11 @@
 import { Input, useInput } from "@nextui-org/react";
 import { Spacer } from "@nextui-org/react";
+import { useState, useEffect } from "react";
+import NoSSR from "react-no-ssr";
 // @ts-ignore
 const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
   const { value, reset, bindings } = useInput("");
+  const [isAIPrompt, setIsAIPrompt] = useState(Math.random() > 0.5);
 
 
   // @ts-ignore
@@ -25,15 +28,16 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
     e.preventDefault();
   };
 
-  const isAIPrompt = Math.random() > 0.5;
+  useEffect(() => {
+    if (isAIPrompt) {
+      localStorage.setItem("prompt2", "AI");
+    } else {
+      localStorage.setItem("prompt2", "humans");
+    }
+  }, []);
 
-  if (isAIPrompt) {
-    localStorage.setItem("prompt2", "AI");
-  } else {
-    localStorage.setItem("prompt2", "humans");
-  }
   return (
-    <>
+    <NoSSR>
       <div className="w-80">
           <div className="text-sm text-left text-[#d8c0b9] font-mono">
             The Surreal Matrix of AI,
@@ -83,7 +87,7 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
           }} style={{color: "#d8c0b9"}}>+ MORE INFO</button>
         </div>
       </div>
-    </>
+    </NoSSR>
   );
 };
 
