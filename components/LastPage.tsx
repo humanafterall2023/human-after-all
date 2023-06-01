@@ -104,6 +104,7 @@ const LastPage = ({ setToggle }) => {
                 {images.map((image) => (
                   // @ts-ignore
                   <img
+                    style={{cursor: "pointer"}}
                     key={image.id}
                     src={image.thumbnailUrl}
                     alt={image.response1}
@@ -113,20 +114,23 @@ const LastPage = ({ setToggle }) => {
               </div>
             ) : (
               <div className="mt-4">
-                <button className="mb-4 ml-4 text-right" onClick={handleBack}>
-                  Back to Gallery
-                </button>
                 {isLoading ? (
                   <div>Loading...</div> // Display loading state while the image is loading
                 ) : (
                   // @ts-ignore
                   <>
+                    <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2" style={{fontSize:"1.1rem", fontWeight: 260, letterSpacing: "2px"}}>
+                      {selectedImage.response1}
+                    </div>
+                    <br/>
                     <img
+                      style={{borderRadius: "2px", border: "1px solid #d8c0b9"}}
                       src={selectedImage.imageUrl}
                       alt={selectedImage.response1}
                       className="mx-auto max-w-full"
                     />
-                    <i>{selectedImage.response1}</i>
+                    <br/>
+                    <button className="mb-4 text-right text-mono font-mono font-thin" style={{color: "#d8c0b9"}} onClick={handleBack}>GALLERY</button>
                   </>
                 )}
               </div>

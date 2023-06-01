@@ -125,9 +125,8 @@ const Schedule = () => {
 
   return (
     <div className="w-full justify-center">
-      <br />
       <div className="text-[#d8c0b9] font-mono" style={{fontSize:"1.3rem", fontWeight: 260, letterSpacing: "2px"}}>SCHEDULE</div>
-      <br />
+      <br/>
       {eventsData.map((day, index) => (
         <div key={index} className="flex flex-col items-start">
           <div className="text-[#d8c0b9] text-md font-mono mt-2 mb-2">

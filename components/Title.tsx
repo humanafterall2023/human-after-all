@@ -65,7 +65,7 @@ const Title = ({ handleReset, toggle, setToggle }) => {
                       }) : <span/>
                     }
                     <div style={{
-                      backgroundColor: "#d8c0b9",
+                      color: "#d8c0b9",
                       cursor: "pointer", 
                       fontSize: "2.5rem",
                       width: 50,
@@ -75,7 +75,6 @@ const Title = ({ handleReset, toggle, setToggle }) => {
                       display:"flex",
                       justifyContent:"center",
                       alignItems:"center",
-                      color: "black",
                     }}
                       className="pulse"
                       onClick={() => {
@@ -84,12 +83,14 @@ const Title = ({ handleReset, toggle, setToggle }) => {
                     ><span style={{marginTop: -4}}>+</span></div>
                   </div>
               <br />
-              <br/>
               <div className="text-[#d8c0b9] mb-4 font-mono" style={{fontSize:"1.3rem", fontWeight: 260, letterSpacing: "2px"}}>MOTIVE</div>
               <div className="text-[#d8c0b9] font-mono text-sm">
+
+
+              
+              <p className="font-mono" style={{textIndent:"0px"}}>HUMAN AFTER ALL will bring together thought leaders, technologists, artists, and companies alike for a 10 day symposium inside Calatrava’s iconic Oculus WTC at Canvas 3.0.</p>
               <br/>
-              <p className="font-mono" style={{textIndent:"20px"}}>Human After All is a week long symposium in Oculus WTC transit hub from June 4th to the 12th. We seek to explore the questions surrounding Artificial Intelligence and the myriad of ways that it has already - and will continue to - impact and enhance our human experience.</p>
-              <p className="font-mono" style={{textIndent:"20px"}}>    Curating a range of dialogues, presentations, and interactive programs HAA brings together intersectional thought leaders and companies that help us understand the spectacular and alarming potential of AI, accepting narratives of fear and embracing the unknowable and…it will be… marvelous.</p>
+              <p className="font-mono" style={{textIndent:"0px"}}>Through a range of dialogues, presentations, and interactive programs — we’ll explore the spectacular and alarming potentials of AI, bringing new perspectives and deeper understanding to this evolving landscape.</p>
               </div>
               </div>
               <br/>

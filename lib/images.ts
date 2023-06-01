@@ -41,8 +41,33 @@ export const createImage = async (input: Image) => {
       'nighttime'
     ];
     const time = TIMES[Math.floor(Math.random() * TIMES.length)];
+
+
+    const LOCATIONS = [
+      'Grand Central Station',
+      'Central Park',
+      'Brooklyn Bridge',
+      'Empire State Building',
+      'Subway',
+      'World Trade Center',
+      'Statue of Liberty',
+      'Times Square',
+      'Madison Square Garden',
+    ];
+
+    const location = LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)];
+    const promptText = `describe an image of something a ${input.response1} person is doing in 5 words`
+    const promptGen = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [
+        { role: "user", content: promptText }
+      ]
+    });
+    const promptResponse = promptGen.data.choices[0].message?.content;
+    const finalPrompt = `A portrait photograph of a human ${promptResponse}, ${location} in New York City, in the style of ${artist}`;
+    console.log('prompting: ', finalPrompt);
     const response = await openai.createImage({
-      prompt: `A photograph of a human in New York City, ${input.response1}, ${time}, in the style of ${artist}`,
+      prompt: finalPrompt,
       n: 1,
       size: "512x512",
     });
@@ -59,7 +84,7 @@ export const createImage = async (input: Image) => {
       .from("images")
       .insert({
         response1: input.response1,
-        response2: time,
+        response2: finalPrompt,
         response3: artist,
         userEmail: input.userEmail,
         thumbnailUrl,
