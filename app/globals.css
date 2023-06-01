@@ -34,6 +34,20 @@
   font-weight: 348;
 }
 
+.pulse {
+  animation: lowfade 2s steps(20, start) infinite;
+}
+
+@keyframes lowfade {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 .blink {
   animation: fade 2s steps(20, start) infinite;
 }
