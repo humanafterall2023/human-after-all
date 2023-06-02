@@ -116,25 +116,13 @@ export const createImage = async (input: Image) => {
   }
 };
 
-export const getImages = async () => {
+export const getImages = async (count?: number) => {
   const supabase = createClient(SUPABASE_URL, process.env.SUPABASE_SECRET_KEY!);
   const { data, error } = await supabase
     .from("images")
     .select()
     .order("created_at", { ascending: false })
-    .limit(1000)
-    .returns<Image[]>();
-  if (error) throw error;
-  return data;
-};
-
-export const getPreviewImages = async () => {
-  const supabase = createClient(SUPABASE_URL, process.env.SUPABASE_SECRET_KEY!);
-  const { data, error } = await supabase
-    .from("images")
-    .select()
-    .order("created_at", { ascending: false })
-    .limit(5)
+    .limit(count ?? 100)
     .returns<Image[]>();
   if (error) throw error;
   return data;

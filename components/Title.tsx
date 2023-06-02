@@ -12,7 +12,7 @@ const Title = ({ navigateToPage, handleReset, toggle, setToggle }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: "{}",
+      body: JSON.stringify({ count: 10 }),
     })
       .then((response) => response.json())
       .then((data) => setImages(data))
