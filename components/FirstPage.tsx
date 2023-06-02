@@ -48,7 +48,7 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
             <div className="text-xs text-left text-[#d8c0b9] font-mono mt-2" style={{fontSize: "0.8rem"}}>
               Oculus, NYC
               <Spacer y={0.5} />
-              Canvas 3.0
+              The Canvas 3.0
               <Spacer y={0.5} />
               June 4 - 12, 2023
             </div>

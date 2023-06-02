@@ -72,7 +72,7 @@ const Title = ({ navigateToPage, handleReset, toggle, setToggle }) => {
                 <div className="text-xs text-left text-[#d8c0b9] font-mono mt-2" style={{fontSize: "0.8rem"}}>
                   Oculus, NYC
                   <Spacer y={0.5} />
-                  Canvas 3.0
+                  The Canvas 3.0
                   <Spacer y={0.5} />
                   June 4 - 12, 2023
                 </div>
@@ -91,7 +91,7 @@ const Title = ({ navigateToPage, handleReset, toggle, setToggle }) => {
               <br />
               <div className="text-[#d8c0b9] mb-4 font-mono" style={{fontSize:"1.3rem", fontWeight: 348, letterSpacing: "2px"}}>MOTIVE</div>
               <div className="text-[#d8c0b9] font-mono text-sm">
-              <p className="font-mono" style={{textIndent:"0px"}}>HUMAN AFTER ALL will bring together thought leaders, technologists, artists, and companies alike for a 10 day symposium inside Calatrava’s iconic Oculus WTC at Canvas 3.0.</p>
+              <p className="font-mono" style={{textIndent:"0px"}}>HUMAN AFTER ALL will bring together thought leaders, technologists, artists, and companies alike for a 10 day symposium inside Calatrava’s iconic Oculus WTC at The Canvas 3.0.</p>
               <br/>
               <p className="font-mono" style={{textIndent:"0px"}}>Through a range of dialogues, presentations, and interactive programs — we’ll explore the spectacular and alarming potentials of AI, bringing new perspectives and deeper understanding to this evolving landscape.</p>
               </div>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 type Event = {
   day: string,
-  events: {title: string, time: string, link?: string}[];
+  events: {title: string, description: string; time: string, link: string}[];
 }
 
 const Schedule = () => {
@@ -34,10 +34,12 @@ const Schedule = () => {
           {day.events.map((event, eventIndex) => (
             <div style={{marginLeft: 16}} key={event.title} className="w-full">
               <div>
-                <div className="text-[#749EA1] font-mono" style={{letterSpacing: "0.5px", fontSize: "0.8rem"}}>
+                <div className="text-[#749EA1] font-mono" style={{letterSpacing: "0.5px", fontSize: "0.8rem", cursor: "pointer"}} onClick={(d) => {
+                  window.location.href = event.link;
+                }}>
                   {" "}
                   • {event.title}<br/>
-                  <span className="text-[#d8c0b9]">{event.time}</span>{" "}
+                  <span className="text-[#d8c0b9]">{event.description} ({event.time})</span>{" "}
                 </div>
                 <br/>
               </div>
