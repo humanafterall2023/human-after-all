@@ -59,7 +59,7 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
             Hello :) Type a word to describe {isAIPrompt ? "artificial intelligence" : "humans"}:
           </div>
           <Input
-            style={{ textAlign: "left", margin: "0", border: "0.5px solid #d8c0b9", borderRadius: "2px", padding: "4px" }}
+            style={{ textAlign: "left", margin: "0", fontSize: "16px !important", border: "0.5px solid #d8c0b9", borderRadius: "2px", padding: "4px" }}
             autoFocus
             className="bg-black font-mono top-0 left-0 right-0 bottom-0 text-left flex w-full max-w-lg h-20"
             aria-label="Enter text to generate an image"

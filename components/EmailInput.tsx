@@ -51,7 +51,7 @@ const EmailInput = ({ navigateToPage, currentPageIndex }) => {
   return (
     <Input
       {...emailBindings}
-      style={{ textAlign: "left", margin: "0", border: "0.5px solid #d8c0b9", borderRadius: "2px", padding: "4px" }}
+      style={{ textAlign: "left", margin: "0", fontSize: "16px !important", border: "0.5px solid #d8c0b9", borderRadius: "2px", padding: "4px" }}
       className="bg-black font-mono top-0 left-0 right-0 bottom-0"
       aria-label="Enter your email to claim your art"
       autoFocus
