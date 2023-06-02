@@ -21,7 +21,7 @@ const FirstPage = ({ navigateToPage, currentPageIndex, setToggle }) => {
   const onBlur = async (e) => {
     if (!e.target.value) {
       e.target.focus();
-    } else if (!localStorage.getItem("prompt1")){
+    } else {
       localStorage.setItem("prompt1", e.target.value);
       navigateToPage(currentPageIndex + 1);
     }
