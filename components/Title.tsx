@@ -80,8 +80,7 @@ const Title = ({ navigateToPage, handleReset, toggle, setToggle }) => {
               <div className="w-full">
                   <br/>
                   <div className="flex flex-row" style={{cursor: "pointer", borderRadius: "2px", border: "0.5px solid #d8c0b9"}} onClick={() => {
-                    localStorage.setItem("prompt1", "");
-                    setToggle(!toggle)
+                    window.location.href="/gallery";
                   }}>
                     {
                       images.length > 6 ? images.slice(0, 6).map((d) => {
