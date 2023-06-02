@@ -40,6 +40,7 @@ const GalleryPage = () => {
     <>
       <div className="w-80">
         <div className="input-container rounded bg-black relative w-full flex-row snap-center">
+            <br/>
             <div className="text-xs font-mono font-thin text-[#d8c0b9] mb-2" style={{fontSize:"1.1rem", fontWeight: 260, letterSpacing: "2px"}}>
               GALLERY
             </div>
@@ -54,7 +55,7 @@ const GalleryPage = () => {
                 {images.map((image) => (
                   // @ts-ignore
                   <img
-                    style={{cursor: "pointer"}}
+                    style={{cursor: "pointer", borderRadius: "0.5px", border: "1px solid #d8c0b9"}}
                     key={image.id}
                     src={image.thumbnailUrl}
                     alt={image.response1}

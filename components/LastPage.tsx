@@ -118,7 +118,7 @@ const LastPage = ({ navigateToPage, setToggle }) => {
                 {images.map((image) => (
                   // @ts-ignore
                   <img
-                    style={{cursor: "pointer"}}
+                    style={{cursor: "pointer", borderRadius: "0.5px", border: "1px solid #d8c0b9"}}
                     key={image.id}
                     src={image.thumbnailUrl}
                     alt={image.response1}

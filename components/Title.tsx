@@ -98,6 +98,10 @@ const Title = ({ navigateToPage, handleReset, toggle, setToggle }) => {
               </div>
               <br/>
               <Schedule />
+              <br/>
+              <button className="mb-4 text-right text-mono font-mono font-thin" onClick={() => {
+                window.location.href="mailto:humanafterallai@gmail.com";
+              }} style={{color: "#d8c0b9"}}>+ CONTACT US</button>
             </>
           }
         </div>
