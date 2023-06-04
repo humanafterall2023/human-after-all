@@ -1,5 +1,5 @@
 function convertTime(date: Date) {
-    let hours = date.getHours() - 3;
+    let hours = date.getHours() - 4;
     if  (hours <= 0) hours += 12;
     const minutes = date.getMinutes();
 
@@ -40,13 +40,17 @@ function convertToDay(date: Date) {
 
 export const getEvents = async () => {
     const data = (await (await fetch(process.env.QUERY_URL! + "&rand=" + Math.random())).json()) as { results: any[]};
-    console.log(data);
     const rawList = data.results.map((d) => {
         let estDate = new Date(d.data.time);
         let ret: any = {};
         ret.t = estDate;
-        ret.day = convertToDay(estDate);
-        ret.time = convertTime(estDate);
+        if (!d.data.time) {
+            ret.day = convertToDay(estDate);
+            ret.time = convertTime(estDate);
+        } else {
+            ret.day = "TBA";
+            ret.time = "TBA";
+        }
         ret.description = d.data.description;
         ret.title = d.data.title;
         ret.link = d.data.eventBriteLink;
