@@ -44,7 +44,7 @@ export const getEvents = async () => {
         let estDate = new Date(d.data.time);
         let ret: any = {};
         ret.t = estDate;
-        if (!d.data.time) {
+        if (d.data.time) {
             ret.day = convertToDay(estDate);
             ret.time = convertTime(estDate);
         } else {
