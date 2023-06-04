@@ -1,8 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
-const QUERY_URL = "https://cdn.builder.io/api/v3/content/page?apiKey=d922f0a545c64d7eb7686c622802db1c&limit=100";
-
 function convertTime(date: Date) {
-    const hours = date.getHours();
+    let hours = date.getHours() - 3;
+    if  (hours <= 0) hours += 12;
     const minutes = date.getMinutes();
 
     // Determine if it's AM or PM
@@ -41,13 +39,14 @@ function convertToDay(date: Date) {
 }
 
 export const getEvents = async () => {
-    const data = (await (await fetch(QUERY_URL + "&rand=" + Math.random())).json()) as { results: any[]};
+    const data = (await (await fetch(process.env.QUERY_URL! + "&rand=" + Math.random())).json()) as { results: any[]};
     console.log(data);
     const rawList = data.results.map((d) => {
+        let estDate = new Date(d.data.time);
         let ret: any = {};
-        ret.t = new Date(d.data.time);
-        ret.day = convertToDay(new Date(d.data.time));
-        ret.time = convertTime(new Date(d.data.time));
+        ret.t = estDate;
+        ret.day = convertToDay(estDate);
+        ret.time = convertTime(estDate);
         ret.description = d.data.description;
         ret.title = d.data.title;
         ret.link = d.data.eventBriteLink;
