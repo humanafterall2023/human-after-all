@@ -1,24 +1,15 @@
-function convertTime(date: Date) {
-    let hours = date.getHours() + 3 % 24;
-    const minutes = date.getMinutes();
+import moment from 'moment';
+import 'moment-timezone';
 
-    // Determine if it's AM or PM
-    const period = hours >= 12 ? 'PM' : 'AM';
-
-    // Convert to 12-hour format
-    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-
-    // Format the output
-    let formattedTime;
-    if (minutes === 0) {
-        formattedTime = `${formattedHours} ${period}`;
-    } else {
-        formattedTime = `${formattedHours}:${minutes < 10 ? '0' : ''}${minutes} ${period}`;
-    }
-    return formattedTime;
+function convertTime(date: string) {
+    const d = moment(date);
+    d.tz('America/New_York');
+    return d.format('h:mm A') + ' EDT'
 }
 
-function convertToDay(date: Date) {
+function convertToDay(date: string) {
+    const d = moment(date);
+    d.tz('America/New_York');
     // Define the day and month names
     const dayNames = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
     const monthNames = [
@@ -27,11 +18,11 @@ function convertToDay(date: Date) {
     ];
 
     // Get the day and month from the Date object
-    const day = dayNames[date.getDay()];
-    const month = monthNames[date.getMonth()];
+    const day = dayNames[d.day()];
+    const month = monthNames[d.month()];
 
     // Get the date number
-    const dateNumber = date.getDate();
+    const dateNumber = d.date();
 
     // Format the output
     return `${day}, ${month} ${dateNumber}`;
@@ -44,8 +35,8 @@ export const getEvents = async () => {
         let ret: any = {};
         ret.t = estDate;
         if (d.data.time) {
-            ret.day = convertToDay(estDate);
-            ret.time = convertTime(estDate);
+            ret.day = convertToDay(d.data.time);
+            ret.time = convertTime(d.data.time);
         } else {
             ret.day = "TBA";
             ret.time = "TBA";
