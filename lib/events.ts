@@ -1,6 +1,5 @@
 function convertTime(date: Date) {
-    let hours = date.getHours() - 4;
-    if  (hours <= 0) hours += 12;
+    let hours = date.getHours() + 3 % 24;
     const minutes = date.getMinutes();
 
     // Determine if it's AM or PM
