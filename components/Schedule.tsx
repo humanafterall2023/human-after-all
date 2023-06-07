@@ -35,7 +35,8 @@ const Schedule = () => {
             <div style={{marginLeft: 16}} key={event.title} className="w-full">
               <div>
                 <div className="text-[#749EA1] font-mono" style={{letterSpacing: "0.5px", fontSize: "0.8rem", cursor: "pointer"}} onClick={(d) => {
-                  window.location.href = event.link;
+                  if (event.link !== undefined) window.location.href = event.link;
+                  else alert("Tickets available soon!");
                 }}>
                   {" "}
                   • {event.title}<br/>
